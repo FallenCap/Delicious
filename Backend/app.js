@@ -13,9 +13,6 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use(cors());
 
-// app.use('/', (req, res) => {
-//   res.status(200).send('This is  a testing route');
-// });
 app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {

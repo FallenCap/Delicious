@@ -2,19 +2,19 @@ import AppErr from '../Utils/appErr.js';
 
 const handleCastErrorDB = (err) => {
   const message = `Invalid ${err.path}: ${err.value}`;
-  return new appErr(message, 400);
+  return new AppErr(message, 400);
 };
 
 const handleDuplicateFieldsDB = (err) => {
   const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
   const message = `Duplicate field value: ${value}, Please use another value!`;
-  return new appErr(message, 400);
+  return new AppErr(message, 400);
 };
 
 const handleValidationErrorDB = (err) => {
   const errors = Object.values(err.errors).map((el) => el.message);
   const message = `Inavlid input data.${errors.join('. ')}`;
-  return new appErr(message, 400);
+  return new AppErr(message, 400);
 };
 
 const sendErrorDev = (err, res) => {
@@ -30,7 +30,7 @@ const sendErrorProd = (err, res) => {
   if (err.isOperational) {
     // ! Operational, trusted error: send message to client
     res.status(err.statusCode).json({
-      status: err.message,
+      status: err.status,
       message: err.message,
     });
   } else {
