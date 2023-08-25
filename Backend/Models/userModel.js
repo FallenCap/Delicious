@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
+import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -19,17 +20,21 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Password is required!'],
+    minlength: 8,
+    select: false,
   },
   passwordConfirm: {
     type: String,
-    required: [true, 'Please confirm your password!'],
+    required: [true, 'Please cconfirm your password!'],
     validate: {
+      // * This will check the both password is same or not.
       validator: function (el) {
-        return el === this.password;
+        return el === this.password; // * This only works on create and save!
       },
       message: 'Password are not the same',
     },
   },
+  passwordChangedAt: Date,
 });
 
 userSchema.pre('save', async function (next) {

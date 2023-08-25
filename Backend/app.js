@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
 import morgan from 'morgan';
 import { userRouter } from './Routes/userRoutes.js';
 import { globalErrorHandler } from './Controllers/errorController.js';
@@ -14,7 +13,10 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use(cors());
 
-app.use('/user', userRouter);
+// app.use('/', (req, res) => {
+//   res.status(200).send('This is  a testing route');
+// });
+app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {
   const err = new AppErr(`Can't find ${req.originalUrl}`, 404);
