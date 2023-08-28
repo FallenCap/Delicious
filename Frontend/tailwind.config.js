@@ -7,6 +7,9 @@ export default {
         candy1: '#fd7463',
         candy2: '#ff9362',
       },
+      transitionProperty: {
+        'bg-gradient': 'bg-gradient',
+      },
     },
   },
   plugins: [],
