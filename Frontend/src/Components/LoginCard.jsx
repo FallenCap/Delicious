@@ -10,7 +10,7 @@ const LoginCard = () => {
             <label className="font-semibold text-slate-600 pb-2">Email</label>
             <input
               type="email"
-              label="Enter your email address"
+              placeholder="Enter your email address"
               className="w-96 px-4 py-2 outline-none bg-transparent border-2 border-slate-600 rounded-lg"
             />
           </div>
@@ -20,7 +20,7 @@ const LoginCard = () => {
             </label>
             <input
               type="password"
-              label="Enter your assword"
+              placeholder="Enter your assword"
               className="w-96 px-4 py-2 outline-none bg-transparent border-2 border-slate-600 rounded-lg"
             />
           </div>

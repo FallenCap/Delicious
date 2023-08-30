@@ -1,12 +1,12 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import animationData from '../assets/animation_llufw913.json';
+import animationData1 from '../assets/animation_llufw913.json';
 import LoginCard from '../Components/LoginCard';
 
 const defaultOptions = {
   loop: true,
   autoplay: true,
-  animationData: animationData,
+  animationData: animationData1,
   rendererSettings: {
     preserveAspectRatio: 'xMidYMid slice',
   },
