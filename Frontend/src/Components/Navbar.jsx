@@ -7,7 +7,7 @@ import ProfileButton from './UI/ProfileButton';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { MdClear } from 'react-icons/md';
 
-const toggled = `w-[80vh] h-full bg-gradient-to-t from-candy1 to-candy2 drop-shadow-xl flex justify-center`;
+const toggled = `w-full h-full bg-gradient-to-t from-candy1 to-candy2 drop-shadow-xl flex justify-center`;
 const notToggled = `w-full h-20 overflow-hidden bg-gradient-to-t from-candy1 to-candy2 drop-shadow-xl flex justify-center`;
 
 const Navbar = () => {
