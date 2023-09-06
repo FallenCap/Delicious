@@ -19,7 +19,6 @@ export const signup = catchAsync(async (req, res, next) => {
     passwordConfirm: req.body.passwordConfirm,
     passwordChangedAt: req.body.passwordChangedAt,
   });
-
   const token = signToken(newUser._id);
 
   res.status(201).json({

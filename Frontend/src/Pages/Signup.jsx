@@ -15,13 +15,13 @@ const defaultOptions = {
 const Signup = () => {
   return (
     <React.Fragment>
-      <div className="h-screen flex justify-between items-center w-screen">
-        {/* LottiePlayer */}
-        <div className="px-16 w-1/2">
-          <Lottie options={defaultOptions} className="h-4/5 w-4/5" />
+      <div className="flex items-center justify-center">
+        {/* lottie player */}
+        <div className="absolute blur-[3px] top-0 bottom-0">
+          <Lottie options={defaultOptions} />
         </div>
-        {/* SignupCard */}
-        <div className="px-16 w-1/2 flex justify-center items-center">
+        {/* Login Card */}
+        <div className="flex justify-center items-center">
           <SignupCard />
         </div>
       </div>
