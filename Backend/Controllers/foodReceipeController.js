@@ -18,3 +18,34 @@ export const createReceipe = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+// Todo: function to fetch all receipe.
+export const getAllReceipe = catchAsync(async (req, res, next) => {
+  const receipes = await foodReceipe.find();
+  // console.log(receipes);
+
+  res.status(400).json({
+    status: 'sucess',
+    count: receipes.length,
+    data: {
+      receipes,
+    },
+  });
+});
+
+// TODO: function to fetch receipe using id.
+export const getReceipeById = catchAsync(async (req, res, next) => {
+  const receipe = await foodReceipe.findById(req.params.id);
+  // console.log(receipe);
+
+  if (!receipe) {
+    next(new AppErr(`No receipe found with the _id: ${req.params.id}`, 404));
+  }
+
+  res.status(400).json({
+    status: 'sucess',
+    data: {
+      receipe,
+    },
+  });
+});

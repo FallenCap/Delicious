@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/foodReceipe', foodReceipeRouter);
+app.use('/api/v1/food', foodReceipeRouter);
 
 app.all('*', (req, res, next) => {
   const err = new AppErr(`Can't find ${req.originalUrl}`, 404);
