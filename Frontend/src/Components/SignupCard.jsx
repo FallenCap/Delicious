@@ -43,7 +43,7 @@ const SignupCard = () => {
     <React.Fragment>
       <div className=" w-screen h-screen flex flex-col justify-center items-center z-10">
         <h1 className="text-6xl md:text-7xl font-bold pb-8 text-gray-500 shadow-sm">
-          Signin
+          Sign in
         </h1>
         <form className="flex flex-col" onSubmit={submitUserHandler}>
           <div className="flex flex-col pb-8">
@@ -91,7 +91,7 @@ const SignupCard = () => {
               type="submit"
               className="transition-[bg-gradient] ease-in-out-out delay-300 bg-gradient-to-t from-candy1 to-candy2 hover:bg-gradient-to-b duration-500 w-1/3 md:w-1/2 px-4 py-3 text-white text-base md:text-xl font-bold rounded-xl"
             >
-              Signin
+              Sign in
             </button>
           </div>
         </form>

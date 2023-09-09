@@ -1,6 +1,7 @@
 import foodReceipe from '../Models/foodReceipe.js';
 import catchAsync from '../Utils/catchAsync.js';
 import AppErr from '../Utils/appErr.js';
+import apiFeatures from '../Utils/apiFeatures.js';
 
 // Todo: function to create new food receipe.
 export const createReceipe = catchAsync(async (req, res, next) => {
@@ -21,8 +22,13 @@ export const createReceipe = catchAsync(async (req, res, next) => {
 
 // Todo: function to fetch all receipe.
 export const getAllReceipe = catchAsync(async (req, res, next) => {
-  const receipes = await foodReceipe.find();
-  // console.log(receipes);
+  // * Executing the query for API.
+  const features = new apiFeatures(foodReceipe.find(), req.query)
+    .filter()
+    .sort()
+    .limitfields();
+
+  const receipes = await features.query;
 
   res.status(400).json({
     status: 'sucess',
