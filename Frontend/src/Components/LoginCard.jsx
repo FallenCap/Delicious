@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSetUser } from '../Context/userLoginContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -15,14 +16,20 @@ const LoginCard = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const setUser = useSetUser();
 
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
-      axios.post('http://localhost:3001/api/v1/users/login', {
-        email,
-        password,
-      });
+      const user = await axios.post(
+        'http://localhost:3001/api/v1/users/login',
+        {
+          email,
+          password,
+        }
+      );
+      console.log(user);
+      setUser(user);
       Toast.fire({
         icon: 'success',
         title: 'Logged in successfully',
