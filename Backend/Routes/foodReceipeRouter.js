@@ -1,13 +1,13 @@
 import express from 'express';
 import {
-  createReceipe,
-  getAllReceipe,
-  getReceipeById,
-} from '../Controllers/foodReceipeController.js';
+  createRecipe,
+  getAllRecipe,
+  getRecipeById,
+} from '../Controllers/foodRecipeController.js';
 
 const router = express.Router();
 
-router.route('/receipe').post(createReceipe).get(getAllReceipe);
-router.route('/receipe/:id').get(getReceipeById);
+router.route('/recipe').post(createRecipe).get(getAllRecipe);
+router.route('/recipe/:id').get(getRecipeById);
 
 export { router as foodReceipeRouter };

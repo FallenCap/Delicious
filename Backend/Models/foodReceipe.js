@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const foodReceipeSchema = new mongoose.Schema({
+const foodRecipeSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'A food must have name!'],
@@ -15,7 +15,7 @@ const foodReceipeSchema = new mongoose.Schema({
       message: 'Food should be veg or non-veg',
     },
   },
-  requiredItems: {
+  ingredients: {
     type: [String],
     required: true,
   },
@@ -23,11 +23,15 @@ const foodReceipeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image: {
+    data: Buffer,
+    contentType: String,
+  },
   createdDate: {
     type: Date,
     default: Date.now(),
   },
 });
 
-const foodReceipe = mongoose.model('foodReceipe', foodReceipeSchema);
-export default foodReceipe;
+const foodRecipe = mongoose.model('foodRecipe', foodRecipeSchema);
+export default foodRecipe;

@@ -1,57 +1,57 @@
-import foodReceipe from '../Models/foodReceipe.js';
+import foodRecipe from '../Models/foodReceipe.js';
 import catchAsync from '../Utils/catchAsync.js';
 import AppErr from '../Utils/appErr.js';
 import apiFeatures from '../Utils/apiFeatures.js';
 
 // Todo: function to create new food receipe.
-export const createReceipe = catchAsync(async (req, res, next) => {
-  const newReceipe = await foodReceipe.create({
+export const createRecipe = catchAsync(async (req, res, next) => {
+  const newRecipe = await foodRecipe.create({
     name: req.body.name,
     type: req.body.type,
-    requiredItems: req.body.requiredItems,
+    ingredients: req.body.ingredients,
     process: req.body.process,
   });
 
   res.status(201).json({
     status: 'sucess',
     data: {
-      foodReceipe: newReceipe,
+      foodRecipe: newRecipe,
     },
   });
 });
 
 // Todo: function to fetch all receipe.
-export const getAllReceipe = catchAsync(async (req, res, next) => {
+export const getAllRecipe = catchAsync(async (req, res, next) => {
   // * Executing the query for API.
-  const features = new apiFeatures(foodReceipe.find(), req.query)
+  const features = new apiFeatures(foodRecipe.find(), req.query)
     .filter()
     .sort()
     .limitfields();
 
-  const receipes = await features.query;
+  const recipes = await features.query;
 
   res.status(400).json({
     status: 'sucess',
-    count: receipes.length,
+    count: recipes.length,
     data: {
-      receipes,
+      recipes,
     },
   });
 });
 
 // TODO: function to fetch receipe using id.
-export const getReceipeById = catchAsync(async (req, res, next) => {
-  const receipe = await foodReceipe.findById(req.params.id);
+export const getRecipeById = catchAsync(async (req, res, next) => {
+  const recipe = await foodRecipe.findById(req.params.id);
   // console.log(receipe);
 
-  if (!receipe) {
+  if (!recipe) {
     next(new AppErr(`No receipe found with the _id: ${req.params.id}`, 404));
   }
 
   res.status(400).json({
     status: 'sucess',
     data: {
-      receipe,
+      recipe,
     },
   });
 });

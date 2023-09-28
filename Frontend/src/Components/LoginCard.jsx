@@ -43,7 +43,7 @@ const LoginCard = () => {
   };
   return (
     <React.Fragment>
-      <div className=" w-screen h-screen flex flex-col justify-center items-center z-10">
+      <div className="w-screen h-screen flex flex-col justify-center items-center z-10">
         <h1 className="text-6xl md:text-7xl font-bold pb-8 text-gray-500 shadow-sm">
           Login
         </h1>
