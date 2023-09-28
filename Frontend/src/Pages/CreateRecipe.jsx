@@ -17,11 +17,13 @@ const CreateRecipe = () => {
     <React.Fragment>
       <div className="flex items-center justify-center">
         {/* lottie player */}
-        <div className="absolute blur-[3px] top-0 bottom-0">
+        <div className="fixed blur-[3px] top-0 bottom-0">
           <Lottie options={defaultOptions} />
         </div>
-        <div className="flex justify-center items center">
-          <CreateReceipeCard />
+        <div className="overflow-scroll">
+          <div className="flex justify-center items center">
+            <CreateReceipeCard />
+          </div>
         </div>
       </div>
     </React.Fragment>
