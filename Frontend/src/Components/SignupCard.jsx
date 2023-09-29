@@ -36,7 +36,61 @@ const SignupCard = () => {
         navigate('/login');
       }, 1500);
     } catch (error) {
-      console.log(error);
+      if (
+        error.response.data.error.errors.name &&
+        error.response.data.error.errors.name.message ===
+          'A user must have a name!'
+      ) {
+        Toast.fire({
+          icon: 'warning',
+          title: 'Please enter Username!',
+        });
+      } else if (
+        error.response.data.error.errors.email &&
+        error.response.data.error.errors.email.message ===
+          'A user must have a email!'
+      ) {
+        Toast.fire({
+          icon: 'warning',
+          title: 'Please enter a email address!',
+        });
+      } else if (
+        error.response.data.error.errors.email &&
+        error.response.data.error.errors.email.message ===
+          'Please enter a valid email!'
+      ) {
+        Toast.fire({
+          icon: 'warning',
+          title: 'Please enter a valid email address!',
+        });
+      } else if (
+        error.response.data.error.errors.password &&
+        error.response.data.error.errors.password.message ===
+          'Password is required!'
+      ) {
+        Toast.fire({
+          icon: 'warning',
+          title: 'Please enter a password!',
+        });
+      } else if (
+        error.response.data.error.errors.password &&
+        error.response.data.error.errors.password.kind === 'minlength'
+      ) {
+        Toast.fire({
+          icon: 'warning',
+          title: 'Please enter a password with minimum 8 characters!',
+        });
+      } else if (
+        error.response.data.error.errors.passwordConfirm &&
+        error.response.data.error.errors.passwordConfirm.message ===
+          'Please confirm your password!'
+      ) {
+        Toast.fire({
+          icon: 'warning',
+          title: error.response.data.error.errors.passwordConfirm.message,
+        });
+      }
+      // console.log(error);
     }
   };
   return (
@@ -58,7 +112,7 @@ const SignupCard = () => {
           <div className="flex flex-col pb-8">
             <label className="font-semibold text-slate-600 pb-2">Email</label>
             <input
-              type="email"
+              type="text"
               placeholder="Enter your email address"
               className="w-80 md:w-96 px-4 py-2 outline-none bg-white border-2 border-slate-600 rounded-lg"
               onChange={(e) => setEmail(e.target.value)}

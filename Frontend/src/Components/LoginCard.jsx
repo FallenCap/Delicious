@@ -38,7 +38,18 @@ const LoginCard = () => {
         navigate('/');
       }, 1500);
     } catch (error) {
-      console.log(error);
+      if (error.response.status === 401) {
+        Toast.fire({
+          icon: 'warning',
+          title: error.response.data.message,
+        });
+      } else if (error.response.status === 500) {
+        Toast.fire({
+          icon: 'error',
+          title: error.response.data.message,
+        });
+      }
+      // console.log();
     }
   };
   return (

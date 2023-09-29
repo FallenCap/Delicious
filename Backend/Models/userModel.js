@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   },
   passwordConfirm: {
     type: String,
-    required: [true, 'Please cconfirm your password!'],
+    required: [true, 'Please confirm your password!'],
     validate: {
       // * This will check the both password is same or not.
       validator: function (el) {
