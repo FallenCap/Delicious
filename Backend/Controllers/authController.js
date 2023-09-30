@@ -1,5 +1,6 @@
 import User from '../Models/userModel.js';
 import jwt from 'jsonwebtoken';
+import { promisify } from 'util';
 import catchAsync from '../Utils/catchAsync.js';
 import AppErr from '../Utils/appErr.js';
 
@@ -52,4 +53,49 @@ export const login = catchAsync(async (req, res, next) => {
     token,
     user,
   });
+});
+
+// TODO: Protecting routes
+
+export const protect = catchAsync(async (req, res, next) => {
+  // * Checking the JWT tokens existence
+  let token;
+
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+
+  if (!token) {
+    return next(
+      new AppErr('You are not logged in! Please login to get acess.', 401)
+    );
+  }
+
+  // * Verifying token
+  const decodedToken = await promisify(jwt.verify)(
+    token,
+    process.env.JWT_SECRET
+  );
+
+  console.log(decodedToken);
+
+  // * Check if the user still exists
+  const freshUser = await User.findById(decodedToken.id);
+
+  if (!freshUser) {
+    return next(new AppErr('The user does not exist.', 401));
+  }
+
+  //* Check if the user changes the password after the token was issued
+  if (freshUser.changePasswordAfter(decodedToken.iat)) {
+    return next(
+      new AppErr('User recently changed password! Please login again.', 401)
+    );
+  }
+
+  req.user = freshUser;
+  next();
 });

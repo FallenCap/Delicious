@@ -51,11 +51,26 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+// * Instance methods.
+// TODO: Mehtod to check password and passwordConfirm
 userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+// TODO: Method to check whether user change password after jwt token generation.
+userSchema.methods.changePasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+
+    return JWTTimestamp < changedTimestamp;
+  }
+  return false;
 };
 
 const User = mongoose.model('Users', userSchema);

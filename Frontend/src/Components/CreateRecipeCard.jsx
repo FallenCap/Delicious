@@ -11,7 +11,8 @@ const CreateReceipeCard = () => {
   const [image, setImage] = useState(null);
 
   // TODO: function to add ingredient into ingredients array
-  const addIngredients = () => {
+  const addIngredients = (e) => {
+    e.preventDefault();
     if (ingredient.trim() !== '') {
       setIngredients([...ingredients, ingredient]);
       setIngredient('');
@@ -95,7 +96,7 @@ const CreateReceipeCard = () => {
               onChange={(e) => setIngredient(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  addIngredients();
+                  addIngredients(e);
                 }
               }}
             />
