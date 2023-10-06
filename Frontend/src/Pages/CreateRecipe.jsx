@@ -1,24 +1,15 @@
 import React, { useState, uuseEffect } from 'react';
-import Lottie from 'react-lottie';
 import animationData3 from '../assets/animation_ln0b30ng.json';
+import { Player } from '@lottiefiles/react-lottie-player';
 import CreateReceipeCard from '../Components/CreateRecipeCard';
-
-const defaultOptions = {
-  loop: true,
-  autoplay: true,
-  animationData: animationData3,
-  rendererSettings: {
-    preserveAspectRatio: 'xMidYMid slice',
-  },
-};
 
 const CreateRecipe = () => {
   return (
     <React.Fragment>
       <div className="flex items-center justify-center">
         {/* lottie player */}
-        <div className="fixed blur-[3px] top-0 bottom-0">
-          <Lottie options={defaultOptions} />
+        <div className="blur-[3px] fixed inset-0 flex justify-center items-center">
+          <Player autoplay loop src={animationData3} className="w-full" />
         </div>
         <div className="overflow-scroll">
           <div className="flex justify-center items center">

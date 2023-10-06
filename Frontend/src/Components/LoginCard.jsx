@@ -92,7 +92,7 @@ const LoginCard = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="transition-[bg-gradient] ease-in-out-out delay-300 bg-gradient-to-t from-candy1 to-candy2 hover:bg-gradient-to-b duration-500 w-1/3 md:w-1/2 px-4 py-3 text-white text-base md:text-xl font-bold rounded-xl"
+              className="transition-[bg-gradient] ease-in-out-out delay-300 bg-gradient-to-t from-candy1 to-candy2 hover:bg-gradient-to-b duration-500 md:w-1/2 px-4 py-3 text-white text-base md:text-xl font-bold rounded-xl"
             >
               Login
             </button>
