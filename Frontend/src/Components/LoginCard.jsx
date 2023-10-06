@@ -83,8 +83,8 @@ const LoginCard = () => {
           </div>
           <div className="flex justify-center items-center pb-8">
             <a
-              href="/signup"
               className="hover:underline decoration-1 hover:text-candy1"
+              onClick={() => navigate('/signup')}
             >
               Don't have account, Signup here.
             </a>
